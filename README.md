@@ -16,14 +16,14 @@ jobs:
   check-uncommitted-changes:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
       - name: Make uncommitted changes by creating empty file
         run: touch uncommitted.tmp
       - name: Check for uncommitted changes
         id: check-changes
-        uses: mskri/check-uncommitted-changes-action@v1.0.1
+        uses: drieam/check-uncommitted-changes-action@v2
       - name: Evaluate if there are changes
         if: steps.check-changes.outputs.outcome == failure()
         run: echo "There are uncommitted changes"
@@ -37,14 +37,14 @@ jobs:
   check-uncommitted-changes:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
       - name: Make uncommitted changes by creating empty file
         run: touch uncommitted.tmp
       - name: Check for uncommitted changes
         id: check-changes
-        uses: mskri/check-uncommitted-changes-action@v1.0.1
+        uses: drieam/check-uncommitted-changes-action@v2
       - name: Print uncommitted changes
         if: steps.check-changes.outputs.changes != ''
         run: echo "There are uncommitted changes"

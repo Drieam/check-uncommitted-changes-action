@@ -15,4 +15,4 @@ function check_uncommitted_changes() {
   fi
 }
 
-echo ::set-output name=changes::$(check_uncommitted_changes)
+echo echo changes=$(check_uncommitted_changes) >> $GITHUB_OUTPUT
